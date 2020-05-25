@@ -1,1 +1,0 @@
-regsvr32 EventVB_I.dll
