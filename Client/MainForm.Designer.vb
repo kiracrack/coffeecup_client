@@ -1021,28 +1021,28 @@ Partial Class MainForm
         '
         Me.ToolsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdUserSettings, Me.POSPoleDisplayToolStripMenuItem, Me.cmdChangeUserAccounts, Me.cmdSudgestionBox, Me.ToolStripSeparator7, Me.ConnectionSetupToolStripMenuItem})
         Me.ToolsToolStripMenuItem.Name = "ToolsToolStripMenuItem"
-        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.ToolsToolStripMenuItem.Size = New System.Drawing.Size(46, 20)
         Me.ToolsToolStripMenuItem.Text = "&Tools"
         '
         'cmdUserSettings
         '
         Me.cmdUserSettings.Image = Global.CoffeecupClient.My.Resources.Resources.printer_pos
         Me.cmdUserSettings.Name = "cmdUserSettings"
-        Me.cmdUserSettings.Size = New System.Drawing.Size(235, 22)
+        Me.cmdUserSettings.Size = New System.Drawing.Size(236, 22)
         Me.cmdUserSettings.Text = "POS Printer Settings"
         '
         'POSPoleDisplayToolStripMenuItem
         '
         Me.POSPoleDisplayToolStripMenuItem.Image = Global.CoffeecupClient.My.Resources.Resources.application_terminal
         Me.POSPoleDisplayToolStripMenuItem.Name = "POSPoleDisplayToolStripMenuItem"
-        Me.POSPoleDisplayToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
+        Me.POSPoleDisplayToolStripMenuItem.Size = New System.Drawing.Size(236, 22)
         Me.POSPoleDisplayToolStripMenuItem.Text = "POS Pole Display Settings"
         '
         'cmdChangeUserAccounts
         '
         Me.cmdChangeUserAccounts.Image = Global.CoffeecupClient.My.Resources.Resources.users
         Me.cmdChangeUserAccounts.Name = "cmdChangeUserAccounts"
-        Me.cmdChangeUserAccounts.Size = New System.Drawing.Size(235, 22)
+        Me.cmdChangeUserAccounts.Size = New System.Drawing.Size(236, 22)
         Me.cmdChangeUserAccounts.Text = "Change User Accounts"
         Me.cmdChangeUserAccounts.Visible = False
         '
@@ -1050,19 +1050,19 @@ Partial Class MainForm
         '
         Me.cmdSudgestionBox.Image = Global.CoffeecupClient.My.Resources.Resources.mail__exclamation
         Me.cmdSudgestionBox.Name = "cmdSudgestionBox"
-        Me.cmdSudgestionBox.Size = New System.Drawing.Size(235, 22)
+        Me.cmdSudgestionBox.Size = New System.Drawing.Size(236, 22)
         Me.cmdSudgestionBox.Text = "Error Report or Suggestion Box"
         '
         'ToolStripSeparator7
         '
         Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
-        Me.ToolStripSeparator7.Size = New System.Drawing.Size(232, 6)
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(233, 6)
         '
         'ConnectionSetupToolStripMenuItem
         '
         Me.ConnectionSetupToolStripMenuItem.Image = Global.CoffeecupClient.My.Resources.Resources.network_receive_21
         Me.ConnectionSetupToolStripMenuItem.Name = "ConnectionSetupToolStripMenuItem"
-        Me.ConnectionSetupToolStripMenuItem.Size = New System.Drawing.Size(235, 22)
+        Me.ConnectionSetupToolStripMenuItem.Size = New System.Drawing.Size(236, 22)
         Me.ConnectionSetupToolStripMenuItem.Text = "Connection Setup"
         '
         'AboutToolStripMenuItem
@@ -1103,27 +1103,27 @@ Partial Class MainForm
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.cmdContexChatBox, Me.ToolStripMenuItem2})
         Me.ContextMenuStrip1.Name = "contextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(150, 70)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(151, 70)
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Image = Global.CoffeecupClient.My.Resources.Resources.information
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(150, 22)
         Me.ToolStripMenuItem1.Text = "About..."
         '
         'cmdContexChatBox
         '
         Me.cmdContexChatBox.Image = Global.CoffeecupClient.My.Resources.Resources.mail
         Me.cmdContexChatBox.Name = "cmdContexChatBox"
-        Me.cmdContexChatBox.Size = New System.Drawing.Size(149, 22)
+        Me.cmdContexChatBox.Size = New System.Drawing.Size(150, 22)
         Me.cmdContexChatBox.Text = "View Chat Box"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Image = Global.CoffeecupClient.My.Resources.Resources.cross
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(149, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(150, 22)
         Me.ToolStripMenuItem2.Text = "Exit"
         '
         'BackgroundWorker1
@@ -1214,6 +1214,8 @@ Partial Class MainForm
         Me.XtraScrollableControl1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.XtraScrollableControl1.Appearance.BackColor = System.Drawing.Color.Black
+        Me.XtraScrollableControl1.Appearance.Options.UseBackColor = True
         Me.XtraScrollableControl1.Controls.Add(Me.ToolStrip)
         Me.XtraScrollableControl1.Location = New System.Drawing.Point(1, 209)
         Me.XtraScrollableControl1.LookAndFeel.SkinName = "DevExpress Dark Style"
@@ -1224,9 +1226,9 @@ Partial Class MainForm
         '
         'Panel1
         '
-        Me.Panel1.Location = New System.Drawing.Point(196, 50)
+        Me.Panel1.Location = New System.Drawing.Point(197, 128)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(36, 44)
+        Me.Panel1.Size = New System.Drawing.Size(24, 19)
         Me.Panel1.TabIndex = 7
         '
         'loadimage

@@ -113,43 +113,64 @@ Public Class frmLogin
                         Timer1.Enabled = True
                         ProgressBar1.Visible = True
                     Else
-                        LoadGlobalLicense()
-                        If GlobalDisableSystem = True Then
-                            MessageBox.Show("Invalid system license file!", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End
-                        Else
-                            SystemDatabaseUpdater()
-                            LoadAccountDetails(globaluserid)
-                            If EnableRetainersMode = True Then
-                                If SystemExpiryDate = "" Then
-                                    MessageBox.Show("Modified System Module, Please contact your system administrator!", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                    End
-                                ElseIf CDate(Now.ToShortDateString) > CDate(DecryptTripleDES(SystemExpiryDate)) Then
-                                    com.CommandText = "UPDATE tblsystemlicense set tokencode='" & EncryptTripleDES("EXPIRED") & "'" : com.ExecuteNonQuery()
-                                End If
-                                If DecryptTripleDES(qrysingledata("tokencode", "tokencode", "tblsystemlicense")) = "EXPIRED" Then
-                                    MessageBox.Show("License file is invalid! Please contact your coffeecup system provider", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                    End
-                                End If
-                            End If
-                            If EnableModuleSales = True Then
-                                LoadPOSPrinterSetup()
-                            End If
-                            com.CommandText = "insert into tbllogin set userid = '" & globaluserid & "',intime=current_timestamp" : com.ExecuteNonQuery()
-                            If countqry("tblsystemupdate", "officeid='" & compOfficeid & "'") = 0 Then
-                                com.CommandText = "insert into tblsystemupdate set officeid='" & compOfficeid & "', version='" & fversion & "', datecheck=current_timestamp" : com.ExecuteNonQuery()
-                            Else
-                                com.CommandText = "update tblsystemupdate set  version='" & fversion & "', datecheck=current_timestamp where officeid='" & compOfficeid & "'" : com.ExecuteNonQuery()
-                            End If
-                            com.CommandText = "insert into tblnotifylist set officeid='" & compOfficeid & "', reference='" & globaluserid & "', n_title='New System Logged', n_description='" & LCase(globalfullname) & " successfully logged to the system of " & LCase(compOfficename) & "..', n_type='request', n_by='" & globaluserid & "', n_datetime=current_timestamp,forsync=0" : com.ExecuteNonQuery()
-                            MainForm.Show()
-                            Me.Hide()
-                            Me.AcceptButton = Nothing
-                            txtusername.Text = "Username"
-                            txtpassword.Text = "password"
-                            cmdlogin.Text = "Confirm Login"
-                            cmdlogin.Enabled = True
+                        'LoadGlobalLicense()
+                        'If GlobalDisableSystem = True Then
+                        '    MessageBox.Show("Invalid system license file!", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        '    End
+                        'Else
+                        '    SystemDatabaseUpdater()
+                        '    LoadAccountDetails(globaluserid)
+                        '    If EnableRetainersMode = True Then
+                        '        If SystemExpiryDate = "" Then
+                        '            MessageBox.Show("Modified System Module, Please contact your system administrator!", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        '            End
+                        '        ElseIf CDate(Now.ToShortDateString) > CDate(DecryptTripleDES(SystemExpiryDate)) Then
+                        '            com.CommandText = "UPDATE tblsystemlicense set tokencode='" & EncryptTripleDES("EXPIRED") & "'" : com.ExecuteNonQuery()
+                        '        End If
+                        '        If DecryptTripleDES(qrysingledata("tokencode", "tokencode", "tblsystemlicense")) = "EXPIRED" Then
+                        '            MessageBox.Show("License file is invalid! Please contact your coffeecup system provider", "Coffeecup System", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                        '            End
+                        '        End If
+                        '    End If
+                        '    If EnableModuleSales = True Then
+                        '        LoadPOSPrinterSetup()
+                        '    End If
+                        '    com.CommandText = "insert into tbllogin set userid = '" & globaluserid & "',intime=current_timestamp" : com.ExecuteNonQuery()
+                        '    If countqry("tblsystemupdate", "officeid='" & compOfficeid & "'") = 0 Then
+                        '        com.CommandText = "insert into tblsystemupdate set officeid='" & compOfficeid & "', version='" & fversion & "', datecheck=current_timestamp" : com.ExecuteNonQuery()
+                        '    Else
+                        '        com.CommandText = "update tblsystemupdate set  version='" & fversion & "', datecheck=current_timestamp where officeid='" & compOfficeid & "'" : com.ExecuteNonQuery()
+                        '    End If
+                        '    com.CommandText = "insert into tblnotifylist set officeid='" & compOfficeid & "', reference='" & globaluserid & "', n_title='New System Logged', n_description='" & LCase(globalfullname) & " successfully logged to the system of " & LCase(compOfficename) & "..', n_type='request', n_by='" & globaluserid & "', n_datetime=current_timestamp,forsync=0" : com.ExecuteNonQuery()
+                        '    MainForm.Show()
+                        '    Me.Hide()
+                        '    Me.AcceptButton = Nothing
+                        '    txtusername.Text = "Username"
+                        '    txtpassword.Text = "password"
+                        '    cmdlogin.Text = "Confirm Login"
+                        '    cmdlogin.Enabled = True
+                        'End If
+
+                        SystemDatabaseUpdater()
+                        LoadAccountDetails(globaluserid)
+
+                        If EnableModuleSales = True Then
+                            LoadPOSPrinterSetup()
                         End If
+                        com.CommandText = "insert into tbllogin set userid = '" & globaluserid & "',intime=current_timestamp" : com.ExecuteNonQuery()
+                        If countqry("tblsystemupdate", "officeid='" & compOfficeid & "'") = 0 Then
+                            com.CommandText = "insert into tblsystemupdate set officeid='" & compOfficeid & "', version='" & fversion & "', datecheck=current_timestamp" : com.ExecuteNonQuery()
+                        Else
+                            com.CommandText = "update tblsystemupdate set  version='" & fversion & "', datecheck=current_timestamp where officeid='" & compOfficeid & "'" : com.ExecuteNonQuery()
+                        End If
+                        com.CommandText = "insert into tblnotifylist set officeid='" & compOfficeid & "', reference='" & globaluserid & "', n_title='New System Logged', n_description='" & LCase(globalfullname) & " successfully logged to the system of " & LCase(compOfficename) & "..', n_type='request', n_by='" & globaluserid & "', n_datetime=current_timestamp,forsync=0" : com.ExecuteNonQuery()
+                        MainForm.Show()
+                        Me.Hide()
+                        Me.AcceptButton = Nothing
+                        txtusername.Text = "Username"
+                        txtpassword.Text = "password"
+                        cmdlogin.Text = "Confirm Login"
+                        cmdlogin.Enabled = True
                     End If
 
                     '#Login failed goes here

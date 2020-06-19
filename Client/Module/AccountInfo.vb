@@ -45,7 +45,7 @@ Module AccountInfo
     Public globalIconfolder As String
     Public globalBgColor As String
     Public globalFontColor As String
-    Public globalUserRequiredUpdateInfo As String
+    Public globalUserRequiredUpdateInfo As Boolean
     Public ImageProfile As Image
     'Permission
     Public globalAdminApprover As Boolean
@@ -334,7 +334,7 @@ Module AccountInfo
             globalIconfolder = rst("iconfolderclient").ToString
             globalBgColor = rst("bgcolorclient").ToString
             globalFontColor = rst("fontcolorclient").ToString
-            globalUserRequiredUpdateInfo = rst("requiredupdate")
+            globalUserRequiredUpdateInfo = CBool(rst("requiredupdate"))
 
             If globalCoffeecupUser = True Then
                 globalAuthcode = rst("coffeecupposition").ToString

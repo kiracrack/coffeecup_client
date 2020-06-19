@@ -69,25 +69,25 @@ Partial Class frmPOSPaymentConfirmation
         'txtTotalOnScreen
         '
         Me.txtTotalOnScreen.BackColor = System.Drawing.Color.Gold
-        Me.txtTotalOnScreen.Font = New System.Drawing.Font("Agency FB", 32.25!, System.Drawing.FontStyle.Bold)
+        Me.txtTotalOnScreen.Font = New System.Drawing.Font("Microsoft Sans Serif", 32.25!, System.Drawing.FontStyle.Bold)
         Me.txtTotalOnScreen.ForeColor = System.Drawing.Color.Black
         Me.txtTotalOnScreen.Location = New System.Drawing.Point(64, 31)
         Me.txtTotalOnScreen.Margin = New System.Windows.Forms.Padding(5)
         Me.txtTotalOnScreen.Name = "txtTotalOnScreen"
         Me.txtTotalOnScreen.ReadOnly = True
-        Me.txtTotalOnScreen.Size = New System.Drawing.Size(371, 59)
+        Me.txtTotalOnScreen.Size = New System.Drawing.Size(371, 56)
         Me.txtTotalOnScreen.TabIndex = 17
         Me.txtTotalOnScreen.Text = "0.00"
         Me.txtTotalOnScreen.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txtAmountTender
         '
-        Me.txtAmountTender.Font = New System.Drawing.Font("Agency FB", 32.25!, System.Drawing.FontStyle.Bold)
+        Me.txtAmountTender.Font = New System.Drawing.Font("Microsoft Sans Serif", 32.25!, System.Drawing.FontStyle.Bold)
         Me.txtAmountTender.ForeColor = System.Drawing.Color.Black
         Me.txtAmountTender.Location = New System.Drawing.Point(218, 191)
         Me.txtAmountTender.Margin = New System.Windows.Forms.Padding(5)
         Me.txtAmountTender.Name = "txtAmountTender"
-        Me.txtAmountTender.Size = New System.Drawing.Size(217, 59)
+        Me.txtAmountTender.Size = New System.Drawing.Size(217, 56)
         Me.txtAmountTender.TabIndex = 0
         Me.txtAmountTender.Text = "0.00"
         Me.txtAmountTender.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -114,13 +114,13 @@ Partial Class frmPOSPaymentConfirmation
         '
         'txtPaymentChange
         '
-        Me.txtPaymentChange.Font = New System.Drawing.Font("Agency FB", 32.25!, System.Drawing.FontStyle.Bold)
+        Me.txtPaymentChange.Font = New System.Drawing.Font("Microsoft Sans Serif", 32.25!, System.Drawing.FontStyle.Bold)
         Me.txtPaymentChange.ForeColor = System.Drawing.Color.Black
         Me.txtPaymentChange.Location = New System.Drawing.Point(64, 277)
         Me.txtPaymentChange.Margin = New System.Windows.Forms.Padding(5)
         Me.txtPaymentChange.Name = "txtPaymentChange"
         Me.txtPaymentChange.ReadOnly = True
-        Me.txtPaymentChange.Size = New System.Drawing.Size(371, 59)
+        Me.txtPaymentChange.Size = New System.Drawing.Size(371, 56)
         Me.txtPaymentChange.TabIndex = 21
         Me.txtPaymentChange.Text = "0.00"
         Me.txtPaymentChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -156,7 +156,7 @@ Partial Class frmPOSPaymentConfirmation
         Me.rbMultiPayment.Font = New System.Drawing.Font("Segoe UI", 7.8!)
         Me.rbMultiPayment.Location = New System.Drawing.Point(174, 94)
         Me.rbMultiPayment.Name = "rbMultiPayment"
-        Me.rbMultiPayment.Size = New System.Drawing.Size(129, 17)
+        Me.rbMultiPayment.Size = New System.Drawing.Size(131, 17)
         Me.rbMultiPayment.TabIndex = 402
         Me.rbMultiPayment.Text = "OTHER PAYMENT (F2)"
         Me.rbMultiPayment.UseVisualStyleBackColor = True
@@ -289,7 +289,7 @@ Partial Class frmPOSPaymentConfirmation
         Me.Label13.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.Label13.Location = New System.Drawing.Point(73, 149)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(123, 15)
+        Me.Label13.Size = New System.Drawing.Size(122, 15)
         Me.Label13.TabIndex = 414
         Me.Label13.Text = "Total SOP (Before Tax)"
         '
@@ -367,12 +367,12 @@ Partial Class frmPOSPaymentConfirmation
         '
         'txtInvoiceNumber
         '
-        Me.txtInvoiceNumber.Font = New System.Drawing.Font("Agency FB", 32.25!, System.Drawing.FontStyle.Bold)
+        Me.txtInvoiceNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 32.25!, System.Drawing.FontStyle.Bold)
         Me.txtInvoiceNumber.ForeColor = System.Drawing.Color.Black
         Me.txtInvoiceNumber.Location = New System.Drawing.Point(64, 191)
         Me.txtInvoiceNumber.Margin = New System.Windows.Forms.Padding(5)
         Me.txtInvoiceNumber.Name = "txtInvoiceNumber"
-        Me.txtInvoiceNumber.Size = New System.Drawing.Size(151, 59)
+        Me.txtInvoiceNumber.Size = New System.Drawing.Size(151, 56)
         Me.txtInvoiceNumber.TabIndex = 413
         Me.txtInvoiceNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -406,7 +406,7 @@ Partial Class frmPOSPaymentConfirmation
         Me.radComplimentary.Font = New System.Drawing.Font("Segoe UI", 7.8!)
         Me.radComplimentary.Location = New System.Drawing.Point(309, 94)
         Me.radComplimentary.Name = "radComplimentary"
-        Me.radComplimentary.Size = New System.Drawing.Size(133, 17)
+        Me.radComplimentary.Size = New System.Drawing.Size(134, 17)
         Me.radComplimentary.TabIndex = 416
         Me.radComplimentary.Text = "COMPLIMENTARY (F3)"
         Me.radComplimentary.UseVisualStyleBackColor = True
