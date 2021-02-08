@@ -25,9 +25,9 @@ Partial Class frmPOSProductEnterByAmount
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmPOSProductEnterByAmount))
         Me.txtAmount = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.cmdConfirm = New DevExpress.XtraEditors.SimpleButton()
-        Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -58,6 +58,18 @@ Partial Class frmPOSProductEnterByAmount
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Enter proceed transaction amount"
         '
+        'txtRemarks
+        '
+        Me.txtRemarks.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.txtRemarks.ForeColor = System.Drawing.Color.Black
+        Me.txtRemarks.Location = New System.Drawing.Point(18, 91)
+        Me.txtRemarks.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.Size = New System.Drawing.Size(361, 27)
+        Me.txtRemarks.TabIndex = 1
+        Me.txtRemarks.Text = "Add remarks.."
+        Me.txtRemarks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
@@ -78,18 +90,6 @@ Partial Class frmPOSProductEnterByAmount
         Me.cmdConfirm.Size = New System.Drawing.Size(230, 42)
         Me.cmdConfirm.TabIndex = 827
         Me.cmdConfirm.Text = "Confirm Amount"
-        '
-        'txtRemarks
-        '
-        Me.txtRemarks.Font = New System.Drawing.Font("Segoe UI", 11.0!)
-        Me.txtRemarks.ForeColor = System.Drawing.Color.Black
-        Me.txtRemarks.Location = New System.Drawing.Point(18, 91)
-        Me.txtRemarks.Margin = New System.Windows.Forms.Padding(4)
-        Me.txtRemarks.Name = "txtRemarks"
-        Me.txtRemarks.Size = New System.Drawing.Size(361, 27)
-        Me.txtRemarks.TabIndex = 1
-        Me.txtRemarks.Text = "Add remarks.."
-        Me.txtRemarks.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'frmPOSProductEnterByAmount
         '

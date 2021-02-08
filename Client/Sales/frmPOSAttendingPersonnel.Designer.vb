@@ -38,7 +38,7 @@ Partial Class frmPOSAttendingPersonnel
         Me.cmdConfirmPayment.Enabled = False
         Me.cmdConfirmPayment.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmdConfirmPayment.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdConfirmPayment.Location = New System.Drawing.Point(114, 84)
+        Me.cmdConfirmPayment.Location = New System.Drawing.Point(117, 84)
         Me.cmdConfirmPayment.Name = "cmdConfirmPayment"
         Me.cmdConfirmPayment.Size = New System.Drawing.Size(268, 44)
         Me.cmdConfirmPayment.TabIndex = 19
@@ -67,7 +67,7 @@ Partial Class frmPOSAttendingPersonnel
         Me.txtSalesPerson.FormattingEnabled = True
         Me.txtSalesPerson.IntegralHeight = False
         Me.txtSalesPerson.ItemHeight = 21
-        Me.txtSalesPerson.Location = New System.Drawing.Point(63, 45)
+        Me.txtSalesPerson.Location = New System.Drawing.Point(66, 45)
         Me.txtSalesPerson.Margin = New System.Windows.Forms.Padding(4)
         Me.txtSalesPerson.MaxDropDownItems = 7
         Me.txtSalesPerson.Name = "txtSalesPerson"
@@ -85,9 +85,9 @@ Partial Class frmPOSAttendingPersonnel
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 10.0!)
         Me.Label1.Location = New System.Drawing.Point(60, 23)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(340, 19)
+        Me.Label1.Size = New System.Drawing.Size(381, 19)
         Me.Label1.TabIndex = 414
-        Me.Label1.Text = "Please enter sales person name to validate transaction"
+        Me.Label1.Text = "Please enter personnel incharge name to validate transaction"
         '
         'salesid
         '
@@ -121,7 +121,7 @@ Partial Class frmPOSAttendingPersonnel
         Me.MaximizeBox = False
         Me.Name = "frmPOSAttendingPersonnel"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Attennding Personnel"
+        Me.Text = "Personnel Incharge"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

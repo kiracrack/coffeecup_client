@@ -38,6 +38,7 @@ Partial Class frmPOSEditLine
         Me.cifid = New System.Windows.Forms.TextBox()
         Me.ckContractMode = New System.Windows.Forms.CheckBox()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtRemarks = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'cmdConfirm
@@ -45,7 +46,7 @@ Partial Class frmPOSEditLine
         Me.cmdConfirm.BackColor = System.Drawing.Color.Khaki
         Me.cmdConfirm.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cmdConfirm.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdConfirm.Location = New System.Drawing.Point(210, 129)
+        Me.cmdConfirm.Location = New System.Drawing.Point(210, 208)
         Me.cmdConfirm.Name = "cmdConfirm"
         Me.cmdConfirm.Size = New System.Drawing.Size(162, 38)
         Me.cmdConfirm.TabIndex = 3
@@ -109,7 +110,7 @@ Partial Class frmPOSEditLine
         Me.Label3.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Label3.Location = New System.Drawing.Point(171, 107)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(33, 15)
+        Me.Label3.Size = New System.Drawing.Size(32, 15)
         Me.Label3.TabIndex = 402
         Me.Label3.Text = "Total"
         '
@@ -118,7 +119,7 @@ Partial Class frmPOSEditLine
         Me.txtOriginalQuantity.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtOriginalQuantity.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtOriginalQuantity.ForeColor = System.Drawing.Color.Black
-        Me.txtOriginalQuantity.Location = New System.Drawing.Point(14, 241)
+        Me.txtOriginalQuantity.Location = New System.Drawing.Point(13, 337)
         Me.txtOriginalQuantity.Margin = New System.Windows.Forms.Padding(4)
         Me.txtOriginalQuantity.Name = "txtOriginalQuantity"
         Me.txtOriginalQuantity.Size = New System.Drawing.Size(43, 23)
@@ -132,7 +133,7 @@ Partial Class frmPOSEditLine
         Me.trnid.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.trnid.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.trnid.ForeColor = System.Drawing.Color.Black
-        Me.trnid.Location = New System.Drawing.Point(61, 241)
+        Me.trnid.Location = New System.Drawing.Point(60, 337)
         Me.trnid.Margin = New System.Windows.Forms.Padding(4)
         Me.trnid.Name = "trnid"
         Me.trnid.Size = New System.Drawing.Size(38, 23)
@@ -159,7 +160,7 @@ Partial Class frmPOSEditLine
         Me.mode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.mode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.mode.ForeColor = System.Drawing.Color.Black
-        Me.mode.Location = New System.Drawing.Point(110, 241)
+        Me.mode.Location = New System.Drawing.Point(109, 337)
         Me.mode.Margin = New System.Windows.Forms.Padding(4)
         Me.mode.Name = "mode"
         Me.mode.Size = New System.Drawing.Size(38, 23)
@@ -172,7 +173,7 @@ Partial Class frmPOSEditLine
         Me.txtBarCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtBarCode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtBarCode.ForeColor = System.Drawing.Color.Black
-        Me.txtBarCode.Location = New System.Drawing.Point(15, 215)
+        Me.txtBarCode.Location = New System.Drawing.Point(14, 311)
         Me.txtBarCode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBarCode.Name = "txtBarCode"
         Me.txtBarCode.Size = New System.Drawing.Size(43, 23)
@@ -185,7 +186,7 @@ Partial Class frmPOSEditLine
         Me.txtBatchCode.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtBatchCode.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.txtBatchCode.ForeColor = System.Drawing.Color.Black
-        Me.txtBatchCode.Location = New System.Drawing.Point(61, 215)
+        Me.txtBatchCode.Location = New System.Drawing.Point(60, 311)
         Me.txtBatchCode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBatchCode.Name = "txtBatchCode"
         Me.txtBatchCode.Size = New System.Drawing.Size(43, 23)
@@ -198,7 +199,7 @@ Partial Class frmPOSEditLine
         Me.cifid.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.cifid.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.cifid.ForeColor = System.Drawing.Color.Black
-        Me.cifid.Location = New System.Drawing.Point(110, 215)
+        Me.cifid.Location = New System.Drawing.Point(109, 311)
         Me.cifid.Margin = New System.Windows.Forms.Padding(4)
         Me.cifid.Name = "cifid"
         Me.cifid.Size = New System.Drawing.Size(43, 23)
@@ -209,7 +210,7 @@ Partial Class frmPOSEditLine
         'ckContractMode
         '
         Me.ckContractMode.AutoSize = True
-        Me.ckContractMode.Location = New System.Drawing.Point(15, 191)
+        Me.ckContractMode.Location = New System.Drawing.Point(14, 287)
         Me.ckContractMode.Name = "ckContractMode"
         Me.ckContractMode.Size = New System.Drawing.Size(96, 17)
         Me.ckContractMode.TabIndex = 410
@@ -228,6 +229,18 @@ Partial Class frmPOSEditLine
         Me.Label4.TabIndex = 411
         Me.Label4.Text = "Unit Cost"
         '
+        'txtRemarks
+        '
+        Me.txtRemarks.Font = New System.Drawing.Font("Segoe UI", 11.0!)
+        Me.txtRemarks.ForeColor = System.Drawing.Color.Black
+        Me.txtRemarks.Location = New System.Drawing.Point(60, 131)
+        Me.txtRemarks.Margin = New System.Windows.Forms.Padding(4)
+        Me.txtRemarks.Multiline = True
+        Me.txtRemarks.Name = "txtRemarks"
+        Me.txtRemarks.Size = New System.Drawing.Size(312, 74)
+        Me.txtRemarks.TabIndex = 412
+        Me.txtRemarks.Text = "Add remarks.."
+        '
         'frmPOSEditLine
         '
         Me.AcceptButton = Me.cmdConfirm
@@ -235,7 +248,8 @@ Partial Class frmPOSEditLine
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(387, 176)
+        Me.ClientSize = New System.Drawing.Size(387, 260)
+        Me.Controls.Add(Me.txtRemarks)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.ckContractMode)
         Me.Controls.Add(Me.cifid)
@@ -277,4 +291,5 @@ Partial Class frmPOSEditLine
     Friend WithEvents cifid As System.Windows.Forms.TextBox
     Friend WithEvents ckContractMode As System.Windows.Forms.CheckBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtRemarks As TextBox
 End Class

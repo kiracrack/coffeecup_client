@@ -63,7 +63,7 @@ Public Class frmPOSEditLine
                 Else
                     frmPointOfSale.ckNonInventoryItem.Checked = CBool(qrysingledata("forcontract", "forcontract", "tblglobalproducts where productid='" & txtBarCode.Text & "'"))
                 End If
-                frmPointOfSale.PostSalesTransaction(False, txtBarCode.Text, txtQuantity.Text, Val(CC(txtSellPrice.Text)), 0, "")
+                frmPointOfSale.PostSalesTransaction(False, txtBarCode.Text, txtQuantity.Text, Val(CC(txtSellPrice.Text)), 0, ", remarks='" & rchar(txtRemarks.Text) & "'")
                 frmPointOfSale.txtBarCode.Focus()
                 Me.Close()
             End If

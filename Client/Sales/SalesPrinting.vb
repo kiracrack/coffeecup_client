@@ -655,7 +655,7 @@ Module SalesPrinting
 #End Region
 
 #Region "LX PRINT"
-    Public Sub GenerateLXChargeInvoice(ByVal batchcode As String, ByVal clienname As String, ByVal clientaddress As String, ByVal invoicenumber As String, ByVal partialPayment As Double, ByVal form As Form)
+    Public Sub GenerateLXChargeInvoice(ByVal batchcode As String, ByVal clienname As String, ByVal clientaddress As String, ByVal invoicenumber As String, ByVal partialPayment As Double, ByVal remarks As String, ByVal form As Form)
         Dim TableHead As String = "" : Dim TableRow As String = "" : Dim TableFooter As String = "" : Dim TableTransaction As String = "" : Dim Total As Double = 0
         'CreateHTMLReportTemplate("ReceiptTemplate.html")
         Dim Template As String = Application.StartupPath.ToString & "\Templates\ReceiptTemplate.html"
@@ -701,6 +701,7 @@ Module SalesPrinting
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[title]", Globalchargeinvoicettitle), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[client name]", clienname), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[client address]", clientaddress), False)
+        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[remarks]", remarks), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[invoice]", invoicenumber), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[date]", If(globalBackDateTransaction = True, globalBackDate.ToShortDateString, Now.ToShortDateString)), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[transaction]", TableTransaction), False)
