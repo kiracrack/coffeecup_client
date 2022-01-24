@@ -105,6 +105,13 @@ Public Class frmPOSPaymentConfirmation
         txtPaymentChange.BackColor = Color.Lime
         txtPaymentChange.ForeColor = Color.Black
         txtComplimentaryRemarks.Text = ""
+
+        If EnableModuleHotel Then
+            SimpleButton1.Visible = True
+        Else
+            SimpleButton1.Visible = False
+        End If
+
         If Globalenablesaleinvoicenumber = True Then
             lbltender.Text = "Enter Invoice # and Amount not less than total transaction amount"
             txtInvoiceNumber.Visible = True

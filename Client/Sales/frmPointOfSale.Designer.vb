@@ -180,7 +180,7 @@ Partial Class frmPointOfSale
         Me.GroupBox1.Controls.Add(Me.cmdCancelLine)
         Me.GroupBox1.Controls.Add(Me.cmdVoidTransaction)
         Me.GroupBox1.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox1.Location = New System.Drawing.Point(822, 396)
+        Me.GroupBox1.Location = New System.Drawing.Point(812, 396)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(261, 332)
         Me.GroupBox1.TabIndex = 364
@@ -330,7 +330,7 @@ Partial Class frmPointOfSale
         Me.txtBarCode.Location = New System.Drawing.Point(99, 19)
         Me.txtBarCode.Margin = New System.Windows.Forms.Padding(4)
         Me.txtBarCode.Name = "txtBarCode"
-        Me.txtBarCode.Size = New System.Drawing.Size(698, 31)
+        Me.txtBarCode.Size = New System.Drawing.Size(688, 31)
         Me.txtBarCode.TabIndex = 1
         '
         'txtDateTransaction
@@ -372,7 +372,7 @@ Partial Class frmPointOfSale
         Me.Panel2.Controls.Add(Me.ToolStrip3)
         Me.Panel2.Location = New System.Drawing.Point(2, 4)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(1102, 37)
+        Me.Panel2.Size = New System.Drawing.Size(1092, 37)
         Me.Panel2.TabIndex = 397
         '
         'ToolStrip3
@@ -385,7 +385,7 @@ Partial Class frmPointOfSale
         Me.ToolStrip3.Name = "ToolStrip3"
         Me.ToolStrip3.Padding = New System.Windows.Forms.Padding(10, 2, 1, 2)
         Me.ToolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip3.Size = New System.Drawing.Size(1102, 37)
+        Me.ToolStrip3.Size = New System.Drawing.Size(1092, 37)
         Me.ToolStrip3.TabIndex = 0
         Me.ToolStrip3.Text = "ToolStrip3"
         '
@@ -541,7 +541,7 @@ Partial Class frmPointOfSale
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox2.Location = New System.Drawing.Point(12, 145)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(805, 50)
+        Me.GroupBox2.Size = New System.Drawing.Size(795, 50)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Client Information"
@@ -585,7 +585,7 @@ Partial Class frmPointOfSale
         Me.grpBarcode.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.grpBarcode.Location = New System.Drawing.Point(13, 200)
         Me.grpBarcode.Name = "grpBarcode"
-        Me.grpBarcode.Size = New System.Drawing.Size(804, 66)
+        Me.grpBarcode.Size = New System.Drawing.Size(794, 66)
         Me.grpBarcode.TabIndex = 0
         Me.grpBarcode.TabStop = False
         Me.grpBarcode.Text = "Enter Command (Use shortcut by pressing Alt+T to focus transaction, KEY UP for qu" &
@@ -627,7 +627,7 @@ Partial Class frmPointOfSale
         Me.Panel1.Controls.Add(Me.txtTotalTax)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Controls.Add(Me.txtTotalOnScreen)
-        Me.Panel1.Location = New System.Drawing.Point(822, 43)
+        Me.Panel1.Location = New System.Drawing.Point(812, 43)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(261, 336)
         Me.Panel1.TabIndex = 399
@@ -878,7 +878,7 @@ Partial Class frmPointOfSale
         Me.txtTotalCancelled.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper
         Me.txtTotalCancelled.Font = New System.Drawing.Font("Segoe UI", 8.0!)
         Me.txtTotalCancelled.ForeColor = System.Drawing.Color.Black
-        Me.txtTotalCancelled.Location = New System.Drawing.Point(641, 379)
+        Me.txtTotalCancelled.Location = New System.Drawing.Point(631, 379)
         Me.txtTotalCancelled.Margin = New System.Windows.Forms.Padding(4)
         Me.txtTotalCancelled.Name = "txtTotalCancelled"
         Me.txtTotalCancelled.Size = New System.Drawing.Size(107, 22)
@@ -930,7 +930,7 @@ Partial Class frmPointOfSale
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
         Me.MyDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.MyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.MyDataGridView.Size = New System.Drawing.Size(804, 457)
+        Me.MyDataGridView.Size = New System.Drawing.Size(794, 457)
         Me.MyDataGridView.TabIndex = 401
         '
         'txtuserid
@@ -962,7 +962,7 @@ Partial Class frmPointOfSale
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.ClientSize = New System.Drawing.Size(1093, 734)
+        Me.ClientSize = New System.Drawing.Size(1083, 734)
         Me.Controls.Add(Me.MyDataGridView)
         Me.Controls.Add(Me.txtuserid)
         Me.Controls.Add(Me.Panel1)

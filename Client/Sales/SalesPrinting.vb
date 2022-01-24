@@ -655,7 +655,7 @@ Module SalesPrinting
 #End Region
 
 #Region "LX PRINT"
-    Public Sub GenerateLXChargeInvoice(ByVal batchcode As String, ByVal clienname As String, ByVal clientaddress As String, ByVal invoicenumber As String, ByVal partialPayment As Double, ByVal remarks As String, ByVal form As Form)
+    Public Sub GenerateLXChargeInvoice(ByVal batchcode As String, ByVal clienname As String, ByVal itemname As String, ByVal clientaddress As String, ByVal invoicenumber As String, ByVal partialPayment As Double, ByVal remarks As String, ByVal form As Form)
         Dim TableHead As String = "" : Dim TableRow As String = "" : Dim TableFooter As String = "" : Dim TableTransaction As String = "" : Dim Total As Double = 0
         'CreateHTMLReportTemplate("ReceiptTemplate.html")
         Dim Template As String = Application.StartupPath.ToString & "\Templates\ReceiptTemplate.html"
@@ -664,37 +664,47 @@ Module SalesPrinting
             System.IO.File.Delete(SaveLocation)
         End If
         My.Computer.FileSystem.CopyFile(Template, SaveLocation)
+
+        If System.IO.File.Exists(Application.StartupPath.ToString & "\Logo\logo2.png") = True Then
+            My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[logo]", "<div align='center'><img  style='float: right' src='" & Application.StartupPath.ToString & "\Logo\logo2.png'></div>"), False)
+        Else
+            My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[logo]", ""), False)
+        End If
+
         TableHead = "<table border='1'> " _
                             + " <tr> " _
+                                + " <th>Particular</th> " _
                                 + " <th>Quantity</th> " _
                                 + " <th>Unit</th> " _
-                                + " <th>Particular</th> " _
                                 + " <th>Unit Cost</th> " _
+                                + " <th>Discount</th> " _
                                 + " <th>Total</th> " _
                             + " </tr> " & Chr(13)
 
         com.CommandText = "select *,sum(quantity) as totalquantity,sum(total) as totaltrn from tblsalestransaction where batchcode='" & batchcode & "' and cancelled=0 and void=0 group by productid order by datetrn asc " : rst = com.ExecuteReader
         While rst.Read
             TableRow += "<tr> " _
+                           + " <td>" & rst("productname").ToString & "</td> " _
                            + " <td align='center'>" & rst("totalquantity").ToString & "</td> " _
                            + " <td align='center'>" & rst("unit").ToString & "</td> " _
-                           + " <td width='400'>" & rst("productname").ToString & "</td> " _
-                           + " <td align='right'>" & FormatNumber(rst("sellprice").ToString, 2) & "</td> " _
+                           + " <td align='right'>" & FormatNumber(rst("originalsellprice").ToString, 2) & "</td> " _
+                           + " <td align='right'>" & FormatNumber(rst("distotal").ToString, 2) & "</td> " _
                            + " <td align='right'>" & FormatNumber(rst("totaltrn").ToString, 2) & "</td> " _
                      + " </tr> " & Chr(13)
             Total = Total + rst("totaltrn")
         End While
         rst.Close()
 
-        TableRow += "<tr><td align='right' colspan='4'>Total</td><td align='right'><strong>" & FormatNumber(Total, 2) & "</strong></td></tr> " & Chr(13)
+        TableRow += "<tr><td align='right' colspan='5'>Total</td><td align='right'><strong>" & FormatNumber(Total, 2) & "</strong></td></tr> " & Chr(13)
         If partialPayment > 0 Then
-            TableRow += "<tr><td align='right' colspan='4'>" & If((Total - partialPayment) = 0, "PAID", "Less Partial Payment") & "</td><td align='right'>" & FormatNumber(partialPayment, 2) & "</td></tr> " & Chr(13)
-            TableRow += "<tr><td align='right' colspan='4'>Balance</td><td align='right'>" & FormatNumber(Total - partialPayment, 2) & "</td></tr> " & Chr(13)
+            TableRow += "<tr><td align='right' colspan='5'>" & If((Total - partialPayment) = 0, "PAID", "Less Partial Payment") & "</td><td align='right'>" & FormatNumber(partialPayment, 2) & "</td></tr> " & Chr(13)
+            TableRow += "<tr><td align='right' colspan='5'>Balance</td><td align='right'>" & FormatNumber(Total - partialPayment, 2) & "</td></tr> " & Chr(13)
         End If
 
         TableFooter = "</table>"
 
         TableTransaction = TableHead + TableRow + TableFooter
+        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[itemname]", UCase(itemname)), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[company name]", UCase(GlobalOrganizationName)), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[company address]", GlobalOrganizationAddress), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[company number]", GlobalOrganizationContactNumber), False)

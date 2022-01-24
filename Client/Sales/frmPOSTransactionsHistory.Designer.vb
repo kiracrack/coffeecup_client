@@ -44,6 +44,7 @@ Partial Class frmPOSTransactionsHistory
         Me.cmdPrint = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.cmdColumnChooser = New System.Windows.Forms.ToolStripButton()
+        Me.cmdReprintInvoice = New System.Windows.Forms.ToolStripMenuItem()
         Me.cms_em.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tabInvoices.SuspendLayout()
@@ -55,15 +56,15 @@ Partial Class frmPOSTransactionsHistory
         '
         'cms_em
         '
-        Me.cms_em.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdVoid, Me.cmdReprint})
+        Me.cms_em.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cmdVoid, Me.cmdReprint, Me.cmdReprintInvoice})
         Me.cms_em.Name = "ContextMenuStrip1"
-        Me.cms_em.Size = New System.Drawing.Size(209, 48)
+        Me.cms_em.Size = New System.Drawing.Size(208, 92)
         '
         'cmdVoid
         '
         Me.cmdVoid.Image = Global.CoffeecupClient.My.Resources.Resources.cross
         Me.cmdVoid.Name = "cmdVoid"
-        Me.cmdVoid.Size = New System.Drawing.Size(208, 22)
+        Me.cmdVoid.Size = New System.Drawing.Size(207, 22)
         Me.cmdVoid.Tag = "1"
         Me.cmdVoid.Text = "Void Selected Transaction"
         '
@@ -71,7 +72,7 @@ Partial Class frmPOSTransactionsHistory
         '
         Me.cmdReprint.Image = Global.CoffeecupClient.My.Resources.Resources.printer_pos
         Me.cmdReprint.Name = "cmdReprint"
-        Me.cmdReprint.Size = New System.Drawing.Size(208, 22)
+        Me.cmdReprint.Size = New System.Drawing.Size(207, 22)
         Me.cmdReprint.Text = "Reprint Transaction"
         '
         'mode
@@ -254,6 +255,13 @@ Partial Class frmPOSTransactionsHistory
         Me.cmdColumnChooser.Size = New System.Drawing.Size(103, 24)
         Me.cmdColumnChooser.Text = "Column Setup"
         '
+        'cmdReprintInvoice
+        '
+        Me.cmdReprintInvoice.Image = Global.CoffeecupClient.My.Resources.Resources.Print_Normal
+        Me.cmdReprintInvoice.Name = "cmdReprintInvoice"
+        Me.cmdReprintInvoice.Size = New System.Drawing.Size(207, 22)
+        Me.cmdReprintInvoice.Text = "Reprint Invoice"
+        '
         'frmPOSTransactionsHistory
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -302,4 +310,5 @@ Partial Class frmPOSTransactionsHistory
     Friend WithEvents cmdPrint As System.Windows.Forms.ToolStripButton
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdColumnChooser As System.Windows.Forms.ToolStripButton
+    Friend WithEvents cmdReprintInvoice As ToolStripMenuItem
 End Class

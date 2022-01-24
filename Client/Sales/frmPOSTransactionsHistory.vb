@@ -28,40 +28,47 @@ Public Class frmPOSTransactionsHistory
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = cms_em
             cmdReprint.Visible = True
+            cmdReprintInvoice.Visible = True
             ViewInvoices()
 
         ElseIf TabControl1.SelectedTab Is tabInteroffice Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = cms_em
             cmdReprint.Visible = True
+            cmdReprintInvoice.Visible = False
             ViewInterOffice()
 
         ElseIf TabControl1.SelectedTab Is tabVoid Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = Nothing
+            cmdReprintInvoice.Visible = False
             ShowVoidTransactions()
 
         ElseIf TabControl1.SelectedTab Is tabCancelled Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = Nothing
+            cmdReprintInvoice.Visible = False
             ShowCancelledTransactions()
 
         ElseIf TabControl1.SelectedTab Is tabDetails Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = Nothing
             cmdReprint.Visible = False
+            cmdReprintInvoice.Visible = False
             ShowDetailTransactions()
 
         ElseIf TabControl1.SelectedTab Is tabBatch Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = cms_em
             cmdReprint.Visible = True
+            cmdReprintInvoice.Visible = False
             ShowBatchTransactions()
 
         ElseIf TabControl1.SelectedTab Is tabInvoices Then
             Em.Parent = TabControl1.SelectedTab
             Em.ContextMenuStrip = cms_em
             cmdReprint.Visible = True
+            cmdReprintInvoice.Visible = False
             ViewInvoices()
 
         End If
@@ -82,6 +89,7 @@ Public Class frmPOSTransactionsHistory
         LoadXgrid("CALL sp_salestransaction('INVOICE','" & globalSalesTrnCOde & "',0)", "CALL sp_salestransaction('INVOICE','" & globalSalesTrnCOde & "',0)", Em, GridView1)
 
         XgridColCurrency({"Total Amount", "Amount"}, GridView1)
+        XgridHideColumn({"Address", "itemname"}, GridView1)
         XgridColAlign({"Batch Code", "Invoice No."}, GridView1, DevExpress.Utils.HorzAlignment.Center)
         XgridGeneralSummaryCurrency({"Total Amount"}, GridView1)
     End Sub
@@ -183,5 +191,20 @@ Public Class frmPOSTransactionsHistory
 
     Private Sub cmdClose_Click(sender As Object, e As EventArgs) Handles cmdClose.Click
         Me.Close()
+    End Sub
+
+    Private Sub ReprintInvoiceToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles cmdReprintInvoice.Click
+        Dim partialPayment As Double = 0 : Dim remarks As String = ""
+        com.CommandText = "select * from tblpaymenttransactions where trnid='" & GridView1.GetFocusedRowCellValue("Batch Code").ToString & "'" : rst = com.ExecuteReader
+        While rst.Read
+            partialPayment = rst("paymentamount").ToString
+            remarks = rst("Note").ToString
+        End While
+        rst.Close()
+        GenerateLXChargeInvoice(GridView1.GetFocusedRowCellValue("Batch Code").ToString, GridView1.GetFocusedRowCellValue("Client").ToString,
+                                GridView1.GetFocusedRowCellValue("itemname").ToString,
+                                GridView1.GetFocusedRowCellValue("Address").ToString,
+                                GridView1.GetFocusedRowCellValue("Invoice No.").ToString,
+                                partialPayment, remarks, Me)
     End Sub
 End Class

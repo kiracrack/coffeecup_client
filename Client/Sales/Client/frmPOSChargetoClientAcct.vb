@@ -171,7 +171,7 @@ Public Class frmPOSChargetoClientAcct
                     End If
                 End If
             Else
-                GenerateLXChargeInvoice(txtBatchcode.Text, txtClientName.Text, qrysingledata("compadd", "compadd", "tblclientaccounts where cifid='" & cifid.Text & "'"), txtInvoiceNumber.Text, Val(CC(txtAmountTender.Text)), txtRemarks.Text, Me)
+                GenerateLXChargeInvoice(txtBatchcode.Text, txtClientName.Text, txtGLItem.Text, qrysingledata("compadd", "compadd", "tblclientaccounts where cifid='" & cifid.Text & "'"), txtInvoiceNumber.Text, Val(CC(txtAmountTender.Text)), txtRemarks.Text, Me)
             End If
 
             If countqry("tblsalescoupon", "batchcode='" & txtBatchcode.Text & "' and cancelled=0 and printed=0") > 0 Then
