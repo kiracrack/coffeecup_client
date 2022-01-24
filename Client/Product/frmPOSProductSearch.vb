@@ -105,7 +105,10 @@ Public Class frmPOSProductSearch
                     End If
                 End If
             Else
-                If CBool(qrysingledata("enablespecialprice", "enablespecialprice", "tblclientaccounts where cifid='" & frmPointOfSale.cifid.Text & "'")) = True Then
+                If CBool(qrysingledata("enablecomputelength", "enablecomputelength", "tblglobalproducts where productid='" & rchar(MyDataGridView.Item("Product Code", MyDataGridView.CurrentRow.Index).Value().ToString) & "'")) = True Then
+                    ExecuteComputeLenghtProduct(MyDataGridView.Item("Product Code", MyDataGridView.CurrentRow.Index).Value().ToString, MyDataGridView.Item("Product Name", MyDataGridView.CurrentRow.Index).Value().ToString)
+
+                ElseIf CBool(qrysingledata("enablespecialprice", "enablespecialprice", "tblclientaccounts where cifid='" & frmPointOfSale.cifid.Text & "'")) = True Then
                     If countqry("tblglobalproducts", "productid='" & rchar(MyDataGridView.Item("Product Code", MyDataGridView.CurrentRow.Index).Value().ToString) & "' and forcontract=0") > 0 Then
                         ExecuteSpecialPriceProduct(MyDataGridView.Item("Product Code", MyDataGridView.CurrentRow.Index).Value().ToString, MyDataGridView.Item("Product Name", MyDataGridView.CurrentRow.Index).Value().ToString)
                     Else
@@ -416,8 +419,31 @@ Public Class frmPOSProductSearch
         Me.Close()
     End Sub
 
+    Public Sub ExecuteComputeLenghtProduct(ByVal productid As String, ByVal productname As String)
+        Dim ExecuteAmount As Double = 0
+        Dim frm As New frmPOSProductComputeLength
+        frm.txtProductName.Text = productname
+        frm.productid.Text = productid
+        frm.ShowDialog(Me)
+
+        If frm.Executed = True Then
+            ExecuteAmount = Val(CC(frm.txtHeight.Text)) * Val(CC(frm.txtAmount.Text))
+            Dim remarks As String = frm.txtHeight.Text & "x" & frm.txtQuantity.Text & "x" & frm.txtAmount.Text & " - " & frm.txtRemarks.Text
+            frmPointOfSale.txtBarCode.Text = productid
+            frmPointOfSale.PostSalesTransaction(False, productid, frm.txtQuantity.Text, ExecuteAmount, 0, ", remarks='" & rchar(remarks) & "'")
+
+            ExecuteAmount = 0
+            frmPOSProductComputeLength.Executed = False
+            frmPOSProductComputeLength.Dispose()
+            Me.Close()
+        Else
+            Exit Sub
+        End If
+
+    End Sub
+
 #End Region
-  
+
     Private Sub MyDataGridView_Resize(sender As Object, e As EventArgs) Handles MyDataGridView.Resize
         PaintColumnFormat()
     End Sub

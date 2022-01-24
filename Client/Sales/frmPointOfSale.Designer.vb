@@ -32,6 +32,7 @@ Partial Class frmPointOfSale
         Me.cifid = New System.Windows.Forms.TextBox()
         Me.txtClient = New System.Windows.Forms.ComboBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.cmdAddCharges = New System.Windows.Forms.Button()
         Me.cmdRemarks = New System.Windows.Forms.Button()
         Me.cmdCouponCharge = New System.Windows.Forms.Button()
         Me.cmdInterOffice = New System.Windows.Forms.Button()
@@ -47,8 +48,31 @@ Partial Class frmPointOfSale
         Me.txtTellerAccount = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdClosedAccount = New System.Windows.Forms.ToolStripButton()
+        Me.lineCloseAccount = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdPendingOrderSlip = New System.Windows.Forms.ToolStripButton()
+        Me.lineOrderSlip = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdOnholdTransaction = New System.Windows.Forms.ToolStripButton()
+        Me.lineHold = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdProductSearch = New System.Windows.Forms.ToolStripButton()
+        Me.lineSearchProduct = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdRecoveredTransaction = New System.Windows.Forms.ToolStripButton()
+        Me.lineRecoverd = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdNewClient = New System.Windows.Forms.ToolStripButton()
+        Me.lineNewClient = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdTransactionHistory = New System.Windows.Forms.ToolStripButton()
+        Me.lineTransactionHistory = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdTraceTransaction = New System.Windows.Forms.ToolStripButton()
+        Me.lineTraceTransaction = New System.Windows.Forms.ToolStripSeparator()
+        Me.cmdReturnCurrentInvoice = New System.Windows.Forms.ToolStripButton()
+        Me.lineReturnCurrentInvoice = New System.Windows.Forms.ToolStripSeparator()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.lblCreditLimit = New System.Windows.Forms.Label()
+        Me.cmdSearch = New System.Windows.Forms.Button()
+        Me.cmdInfo = New System.Windows.Forms.Button()
         Me.grpBarcode = New System.Windows.Forms.GroupBox()
         Me.ckNonInventoryItem = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
@@ -74,39 +98,15 @@ Partial Class frmPointOfSale
         Me.txtTotalCancelled = New System.Windows.Forms.TextBox()
         Me.MyDataGridView = New System.Windows.Forms.DataGridView()
         Me.txtuserid = New System.Windows.Forms.TextBox()
-        Me.cmdAddCharges = New System.Windows.Forms.Button()
-        Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdClosedAccount = New System.Windows.Forms.ToolStripButton()
-        Me.lineCloseAccount = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdPendingOrderSlip = New System.Windows.Forms.ToolStripButton()
-        Me.lineOrderSlip = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdOnholdTransaction = New System.Windows.Forms.ToolStripButton()
-        Me.lineHold = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdProductSearch = New System.Windows.Forms.ToolStripButton()
-        Me.lineSearchProduct = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdRecoveredTransaction = New System.Windows.Forms.ToolStripButton()
-        Me.lineRecoverd = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdNewClient = New System.Windows.Forms.ToolStripButton()
-        Me.lineNewClient = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdTransactionHistory = New System.Windows.Forms.ToolStripButton()
-        Me.lineTransactionHistory = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdTraceTransaction = New System.Windows.Forms.ToolStripButton()
-        Me.lineTraceTransaction = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdReturnCurrentInvoice = New System.Windows.Forms.ToolStripButton()
-        Me.lineReturnCurrentInvoice = New System.Windows.Forms.ToolStripSeparator()
-        Me.cmdSearch = New System.Windows.Forms.Button()
-        Me.cmdInfo = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.PictureEdit1 = New DevExpress.XtraEditors.PictureEdit()
         Me.GroupBox1.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        Me.ToolStrip3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.grpBarcode.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.MyDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ToolStrip3.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cmdVoidTransaction
@@ -186,6 +186,18 @@ Partial Class frmPointOfSale
         Me.GroupBox1.TabIndex = 364
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "POS Transaction Menu"
+        '
+        'cmdAddCharges
+        '
+        Me.cmdAddCharges.BackColor = System.Drawing.Color.White
+        Me.cmdAddCharges.Font = New System.Drawing.Font("Segoe UI", 9.0!)
+        Me.cmdAddCharges.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.cmdAddCharges.Location = New System.Drawing.Point(10, 71)
+        Me.cmdAddCharges.Name = "cmdAddCharges"
+        Me.cmdAddCharges.Size = New System.Drawing.Size(119, 45)
+        Me.cmdAddCharges.TabIndex = 401
+        Me.cmdAddCharges.Text = "Add Charges" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.cmdAddCharges.UseVisualStyleBackColor = False
         '
         'cmdRemarks
         '
@@ -363,6 +375,160 @@ Partial Class frmPointOfSale
         Me.Panel2.Size = New System.Drawing.Size(1102, 37)
         Me.Panel2.TabIndex = 397
         '
+        'ToolStrip3
+        '
+        Me.ToolStrip3.AutoSize = False
+        Me.ToolStrip3.BackgroundImage = Global.CoffeecupClient.My.Resources.Resources.wide_blank2
+        Me.ToolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
+        Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripSeparator5, Me.cmdClosedAccount, Me.lineCloseAccount, Me.cmdPendingOrderSlip, Me.lineOrderSlip, Me.cmdOnholdTransaction, Me.lineHold, Me.cmdProductSearch, Me.lineSearchProduct, Me.cmdRecoveredTransaction, Me.lineRecoverd, Me.cmdNewClient, Me.lineNewClient, Me.cmdTransactionHistory, Me.lineTransactionHistory, Me.cmdTraceTransaction, Me.lineTraceTransaction, Me.cmdReturnCurrentInvoice, Me.lineReturnCurrentInvoice})
+        Me.ToolStrip3.Location = New System.Drawing.Point(0, 0)
+        Me.ToolStrip3.Name = "ToolStrip3"
+        Me.ToolStrip3.Padding = New System.Windows.Forms.Padding(10, 2, 1, 2)
+        Me.ToolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.ToolStrip3.Size = New System.Drawing.Size(1102, 37)
+        Me.ToolStrip3.TabIndex = 0
+        Me.ToolStrip3.Text = "ToolStrip3"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.ForeColor = System.Drawing.Color.White
+        Me.ToolStripButton1.Image = Global.CoffeecupClient.My.Resources.Resources.cross
+        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(46, 30)
+        Me.ToolStripButton1.Text = "Exit"
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdClosedAccount
+        '
+        Me.cmdClosedAccount.ForeColor = System.Drawing.Color.White
+        Me.cmdClosedAccount.Image = Global.CoffeecupClient.My.Resources.Resources.door_open_out
+        Me.cmdClosedAccount.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdClosedAccount.Name = "cmdClosedAccount"
+        Me.cmdClosedAccount.Size = New System.Drawing.Size(119, 30)
+        Me.cmdClosedAccount.Text = "Close Transaction"
+        '
+        'lineCloseAccount
+        '
+        Me.lineCloseAccount.Name = "lineCloseAccount"
+        Me.lineCloseAccount.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdPendingOrderSlip
+        '
+        Me.cmdPendingOrderSlip.ForeColor = System.Drawing.Color.White
+        Me.cmdPendingOrderSlip.Image = Global.CoffeecupClient.My.Resources.Resources.flag_blue
+        Me.cmdPendingOrderSlip.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdPendingOrderSlip.Name = "cmdPendingOrderSlip"
+        Me.cmdPendingOrderSlip.Size = New System.Drawing.Size(141, 30)
+        Me.cmdPendingOrderSlip.Text = "Pending Order Slip F1"
+        '
+        'lineOrderSlip
+        '
+        Me.lineOrderSlip.Name = "lineOrderSlip"
+        Me.lineOrderSlip.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdOnholdTransaction
+        '
+        Me.cmdOnholdTransaction.ForeColor = System.Drawing.Color.White
+        Me.cmdOnholdTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.flag
+        Me.cmdOnholdTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdOnholdTransaction.Name = "cmdOnholdTransaction"
+        Me.cmdOnholdTransaction.Size = New System.Drawing.Size(87, 30)
+        Me.cmdOnholdTransaction.Text = "On Hold F2"
+        '
+        'lineHold
+        '
+        Me.lineHold.Name = "lineHold"
+        Me.lineHold.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdProductSearch
+        '
+        Me.cmdProductSearch.ForeColor = System.Drawing.Color.White
+        Me.cmdProductSearch.Image = Global.CoffeecupClient.My.Resources.Resources.search__4_1
+        Me.cmdProductSearch.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdProductSearch.Name = "cmdProductSearch"
+        Me.cmdProductSearch.Size = New System.Drawing.Size(122, 30)
+        Me.cmdProductSearch.Text = "Search Product F3"
+        '
+        'lineSearchProduct
+        '
+        Me.lineSearchProduct.Name = "lineSearchProduct"
+        Me.lineSearchProduct.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdRecoveredTransaction
+        '
+        Me.cmdRecoveredTransaction.ForeColor = System.Drawing.Color.White
+        Me.cmdRecoveredTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.clipboard__exclamation
+        Me.cmdRecoveredTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdRecoveredTransaction.Name = "cmdRecoveredTransaction"
+        Me.cmdRecoveredTransaction.Size = New System.Drawing.Size(97, 30)
+        Me.cmdRecoveredTransaction.Text = "Recovered F4"
+        '
+        'lineRecoverd
+        '
+        Me.lineRecoverd.Name = "lineRecoverd"
+        Me.lineRecoverd.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdNewClient
+        '
+        Me.cmdNewClient.ForeColor = System.Drawing.Color.White
+        Me.cmdNewClient.Image = Global.CoffeecupClient.My.Resources.Resources.users
+        Me.cmdNewClient.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdNewClient.Name = "cmdNewClient"
+        Me.cmdNewClient.Size = New System.Drawing.Size(100, 30)
+        Me.cmdNewClient.Text = "New Client F5"
+        '
+        'lineNewClient
+        '
+        Me.lineNewClient.Name = "lineNewClient"
+        Me.lineNewClient.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdTransactionHistory
+        '
+        Me.cmdTransactionHistory.ForeColor = System.Drawing.Color.White
+        Me.cmdTransactionHistory.Image = Global.CoffeecupClient.My.Resources.Resources.clipboard_list
+        Me.cmdTransactionHistory.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdTransactionHistory.Name = "cmdTransactionHistory"
+        Me.cmdTransactionHistory.Size = New System.Drawing.Size(143, 30)
+        Me.cmdTransactionHistory.Text = "Transaction History F6"
+        '
+        'lineTransactionHistory
+        '
+        Me.lineTransactionHistory.Name = "lineTransactionHistory"
+        Me.lineTransactionHistory.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdTraceTransaction
+        '
+        Me.cmdTraceTransaction.ForeColor = System.Drawing.Color.White
+        Me.cmdTraceTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.book_open_list1
+        Me.cmdTraceTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdTraceTransaction.Name = "cmdTraceTransaction"
+        Me.cmdTraceTransaction.Size = New System.Drawing.Size(117, 30)
+        Me.cmdTraceTransaction.Text = "Trace Transaction"
+        '
+        'lineTraceTransaction
+        '
+        Me.lineTraceTransaction.Name = "lineTraceTransaction"
+        Me.lineTraceTransaction.Size = New System.Drawing.Size(6, 33)
+        '
+        'cmdReturnCurrentInvoice
+        '
+        Me.cmdReturnCurrentInvoice.ForeColor = System.Drawing.Color.White
+        Me.cmdReturnCurrentInvoice.Image = Global.CoffeecupClient.My.Resources.Resources.notebook__backarrow
+        Me.cmdReturnCurrentInvoice.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.cmdReturnCurrentInvoice.Name = "cmdReturnCurrentInvoice"
+        Me.cmdReturnCurrentInvoice.Size = New System.Drawing.Size(144, 20)
+        Me.cmdReturnCurrentInvoice.Text = "Revise Current Invoice"
+        '
+        'lineReturnCurrentInvoice
+        '
+        Me.lineReturnCurrentInvoice.Name = "lineReturnCurrentInvoice"
+        Me.lineReturnCurrentInvoice.Size = New System.Drawing.Size(6, 33)
+        '
         'GroupBox2
         '
         Me.GroupBox2.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -373,7 +539,7 @@ Partial Class frmPointOfSale
         Me.GroupBox2.Controls.Add(Me.txtClient)
         Me.GroupBox2.Controls.Add(Me.cifid)
         Me.GroupBox2.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 114)
+        Me.GroupBox2.Location = New System.Drawing.Point(12, 145)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(805, 50)
         Me.GroupBox2.TabIndex = 1
@@ -392,6 +558,24 @@ Partial Class frmPointOfSale
         Me.lblCreditLimit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.lblCreditLimit.Visible = False
         '
+        'cmdSearch
+        '
+        Me.cmdSearch.Image = Global.CoffeecupClient.My.Resources.Resources.search__4_1
+        Me.cmdSearch.Location = New System.Drawing.Point(373, 19)
+        Me.cmdSearch.Name = "cmdSearch"
+        Me.cmdSearch.Size = New System.Drawing.Size(27, 25)
+        Me.cmdSearch.TabIndex = 6
+        Me.cmdSearch.UseVisualStyleBackColor = True
+        '
+        'cmdInfo
+        '
+        Me.cmdInfo.Image = Global.CoffeecupClient.My.Resources.Resources.information
+        Me.cmdInfo.Location = New System.Drawing.Point(345, 19)
+        Me.cmdInfo.Name = "cmdInfo"
+        Me.cmdInfo.Size = New System.Drawing.Size(27, 25)
+        Me.cmdInfo.TabIndex = 5
+        Me.cmdInfo.UseVisualStyleBackColor = True
+        '
         'grpBarcode
         '
         Me.grpBarcode.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
@@ -399,18 +583,18 @@ Partial Class frmPointOfSale
         Me.grpBarcode.Controls.Add(Me.txtBarCode)
         Me.grpBarcode.Controls.Add(Me.txtQuantity)
         Me.grpBarcode.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpBarcode.Location = New System.Drawing.Point(13, 169)
+        Me.grpBarcode.Location = New System.Drawing.Point(13, 200)
         Me.grpBarcode.Name = "grpBarcode"
         Me.grpBarcode.Size = New System.Drawing.Size(804, 66)
         Me.grpBarcode.TabIndex = 0
         Me.grpBarcode.TabStop = False
-        Me.grpBarcode.Text = "Enter Command (Use shortcut by pressing Alt+T to focus transaction, KEY UP for qu" & _
+        Me.grpBarcode.Text = "Enter Command (Use shortcut by pressing Alt+T to focus transaction, KEY UP for qu" &
     "antity, Enter Key or Spacebar for product code)"
         '
         'ckNonInventoryItem
         '
         Me.ckNonInventoryItem.AutoSize = True
-        Me.ckNonInventoryItem.Location = New System.Drawing.Point(639, 268)
+        Me.ckNonInventoryItem.Location = New System.Drawing.Point(639, 299)
         Me.ckNonInventoryItem.Name = "ckNonInventoryItem"
         Me.ckNonInventoryItem.Size = New System.Drawing.Size(93, 17)
         Me.ckNonInventoryItem.TabIndex = 398
@@ -646,7 +830,7 @@ Partial Class frmPointOfSale
         Me.lblVat.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.lblVat.Location = New System.Drawing.Point(7, 119)
         Me.lblVat.Name = "lblVat"
-        Me.lblVat.Size = New System.Drawing.Size(27, 15)
+        Me.lblVat.Size = New System.Drawing.Size(26, 15)
         Me.lblVat.TabIndex = 398
         Me.lblVat.Text = "VAT"
         '
@@ -671,7 +855,7 @@ Partial Class frmPointOfSale
         Me.Label1.ImeMode = System.Windows.Forms.ImeMode.NoControl
         Me.Label1.Location = New System.Drawing.Point(7, 72)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(41, 15)
+        Me.Label1.Size = New System.Drawing.Size(39, 15)
         Me.Label1.TabIndex = 396
         Me.Label1.Text = "TOTAL"
         '
@@ -726,7 +910,7 @@ Partial Class frmPointOfSale
         DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.MyDataGridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.MyDataGridView.GridColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.MyDataGridView.Location = New System.Drawing.Point(13, 240)
+        Me.MyDataGridView.Location = New System.Drawing.Point(13, 271)
         Me.MyDataGridView.Margin = New System.Windows.Forms.Padding(2)
         Me.MyDataGridView.MultiSelect = False
         Me.MyDataGridView.Name = "MyDataGridView"
@@ -746,7 +930,7 @@ Partial Class frmPointOfSale
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White
         Me.MyDataGridView.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.MyDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.MyDataGridView.Size = New System.Drawing.Size(804, 488)
+        Me.MyDataGridView.Size = New System.Drawing.Size(804, 457)
         Me.MyDataGridView.TabIndex = 401
         '
         'txtuserid
@@ -761,197 +945,16 @@ Partial Class frmPointOfSale
         Me.txtuserid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         Me.txtuserid.Visible = False
         '
-        'cmdAddCharges
+        'PictureEdit1
         '
-        Me.cmdAddCharges.BackColor = System.Drawing.Color.White
-        Me.cmdAddCharges.Font = New System.Drawing.Font("Segoe UI", 9.0!)
-        Me.cmdAddCharges.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.cmdAddCharges.Location = New System.Drawing.Point(10, 71)
-        Me.cmdAddCharges.Name = "cmdAddCharges"
-        Me.cmdAddCharges.Size = New System.Drawing.Size(119, 45)
-        Me.cmdAddCharges.TabIndex = 401
-        Me.cmdAddCharges.Text = "Add Charges" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.cmdAddCharges.UseVisualStyleBackColor = False
-        '
-        'ToolStrip3
-        '
-        Me.ToolStrip3.AutoSize = False
-        Me.ToolStrip3.BackgroundImage = Global.CoffeecupClient.My.Resources.Resources.wide_blank2
-        Me.ToolStrip3.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
-        Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripSeparator5, Me.cmdClosedAccount, Me.lineCloseAccount, Me.cmdPendingOrderSlip, Me.lineOrderSlip, Me.cmdOnholdTransaction, Me.lineHold, Me.cmdProductSearch, Me.lineSearchProduct, Me.cmdRecoveredTransaction, Me.lineRecoverd, Me.cmdNewClient, Me.lineNewClient, Me.cmdTransactionHistory, Me.lineTransactionHistory, Me.cmdTraceTransaction, Me.lineTraceTransaction, Me.cmdReturnCurrentInvoice, Me.lineReturnCurrentInvoice})
-        Me.ToolStrip3.Location = New System.Drawing.Point(0, 0)
-        Me.ToolStrip3.Name = "ToolStrip3"
-        Me.ToolStrip3.Padding = New System.Windows.Forms.Padding(10, 2, 1, 2)
-        Me.ToolStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ToolStrip3.Size = New System.Drawing.Size(1102, 37)
-        Me.ToolStrip3.TabIndex = 0
-        Me.ToolStrip3.Text = "ToolStrip3"
-        '
-        'ToolStripButton1
-        '
-        Me.ToolStripButton1.ForeColor = System.Drawing.Color.White
-        Me.ToolStripButton1.Image = Global.CoffeecupClient.My.Resources.Resources.cross
-        Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(45, 30)
-        Me.ToolStripButton1.Text = "Exit"
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdClosedAccount
-        '
-        Me.cmdClosedAccount.ForeColor = System.Drawing.Color.White
-        Me.cmdClosedAccount.Image = Global.CoffeecupClient.My.Resources.Resources.door_open_out
-        Me.cmdClosedAccount.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdClosedAccount.Name = "cmdClosedAccount"
-        Me.cmdClosedAccount.Size = New System.Drawing.Size(120, 30)
-        Me.cmdClosedAccount.Text = "Close Transaction"
-        '
-        'lineCloseAccount
-        '
-        Me.lineCloseAccount.Name = "lineCloseAccount"
-        Me.lineCloseAccount.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdPendingOrderSlip
-        '
-        Me.cmdPendingOrderSlip.ForeColor = System.Drawing.Color.White
-        Me.cmdPendingOrderSlip.Image = Global.CoffeecupClient.My.Resources.Resources.flag_blue
-        Me.cmdPendingOrderSlip.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdPendingOrderSlip.Name = "cmdPendingOrderSlip"
-        Me.cmdPendingOrderSlip.Size = New System.Drawing.Size(141, 30)
-        Me.cmdPendingOrderSlip.Text = "Pending Order Slip F1"
-        '
-        'lineOrderSlip
-        '
-        Me.lineOrderSlip.Name = "lineOrderSlip"
-        Me.lineOrderSlip.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdOnholdTransaction
-        '
-        Me.cmdOnholdTransaction.ForeColor = System.Drawing.Color.White
-        Me.cmdOnholdTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.flag
-        Me.cmdOnholdTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdOnholdTransaction.Name = "cmdOnholdTransaction"
-        Me.cmdOnholdTransaction.Size = New System.Drawing.Size(87, 30)
-        Me.cmdOnholdTransaction.Text = "On Hold F2"
-        '
-        'lineHold
-        '
-        Me.lineHold.Name = "lineHold"
-        Me.lineHold.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdProductSearch
-        '
-        Me.cmdProductSearch.ForeColor = System.Drawing.Color.White
-        Me.cmdProductSearch.Image = Global.CoffeecupClient.My.Resources.Resources.search__4_1
-        Me.cmdProductSearch.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdProductSearch.Name = "cmdProductSearch"
-        Me.cmdProductSearch.Size = New System.Drawing.Size(122, 30)
-        Me.cmdProductSearch.Text = "Search Product F3"
-        '
-        'lineSearchProduct
-        '
-        Me.lineSearchProduct.Name = "lineSearchProduct"
-        Me.lineSearchProduct.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdRecoveredTransaction
-        '
-        Me.cmdRecoveredTransaction.ForeColor = System.Drawing.Color.White
-        Me.cmdRecoveredTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.clipboard__exclamation
-        Me.cmdRecoveredTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdRecoveredTransaction.Name = "cmdRecoveredTransaction"
-        Me.cmdRecoveredTransaction.Size = New System.Drawing.Size(97, 30)
-        Me.cmdRecoveredTransaction.Text = "Recovered F4"
-        '
-        'lineRecoverd
-        '
-        Me.lineRecoverd.Name = "lineRecoverd"
-        Me.lineRecoverd.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdNewClient
-        '
-        Me.cmdNewClient.ForeColor = System.Drawing.Color.White
-        Me.cmdNewClient.Image = Global.CoffeecupClient.My.Resources.Resources.users
-        Me.cmdNewClient.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdNewClient.Name = "cmdNewClient"
-        Me.cmdNewClient.Size = New System.Drawing.Size(100, 30)
-        Me.cmdNewClient.Text = "New Client F5"
-        '
-        'lineNewClient
-        '
-        Me.lineNewClient.Name = "lineNewClient"
-        Me.lineNewClient.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdTransactionHistory
-        '
-        Me.cmdTransactionHistory.ForeColor = System.Drawing.Color.White
-        Me.cmdTransactionHistory.Image = Global.CoffeecupClient.My.Resources.Resources.clipboard_list
-        Me.cmdTransactionHistory.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdTransactionHistory.Name = "cmdTransactionHistory"
-        Me.cmdTransactionHistory.Size = New System.Drawing.Size(144, 30)
-        Me.cmdTransactionHistory.Text = "Transaction History F6"
-        '
-        'lineTransactionHistory
-        '
-        Me.lineTransactionHistory.Name = "lineTransactionHistory"
-        Me.lineTransactionHistory.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdTraceTransaction
-        '
-        Me.cmdTraceTransaction.ForeColor = System.Drawing.Color.White
-        Me.cmdTraceTransaction.Image = Global.CoffeecupClient.My.Resources.Resources.book_open_list1
-        Me.cmdTraceTransaction.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdTraceTransaction.Name = "cmdTraceTransaction"
-        Me.cmdTraceTransaction.Size = New System.Drawing.Size(119, 30)
-        Me.cmdTraceTransaction.Text = "Trace Transaction"
-        '
-        'lineTraceTransaction
-        '
-        Me.lineTraceTransaction.Name = "lineTraceTransaction"
-        Me.lineTraceTransaction.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdReturnCurrentInvoice
-        '
-        Me.cmdReturnCurrentInvoice.ForeColor = System.Drawing.Color.White
-        Me.cmdReturnCurrentInvoice.Image = Global.CoffeecupClient.My.Resources.Resources.notebook__backarrow
-        Me.cmdReturnCurrentInvoice.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.cmdReturnCurrentInvoice.Name = "cmdReturnCurrentInvoice"
-        Me.cmdReturnCurrentInvoice.Size = New System.Drawing.Size(144, 20)
-        Me.cmdReturnCurrentInvoice.Text = "Revise Current Invoice"
-        '
-        'lineReturnCurrentInvoice
-        '
-        Me.lineReturnCurrentInvoice.Name = "lineReturnCurrentInvoice"
-        Me.lineReturnCurrentInvoice.Size = New System.Drawing.Size(6, 33)
-        '
-        'cmdSearch
-        '
-        Me.cmdSearch.Image = Global.CoffeecupClient.My.Resources.Resources.search__4_1
-        Me.cmdSearch.Location = New System.Drawing.Point(373, 19)
-        Me.cmdSearch.Name = "cmdSearch"
-        Me.cmdSearch.Size = New System.Drawing.Size(27, 25)
-        Me.cmdSearch.TabIndex = 6
-        Me.cmdSearch.UseVisualStyleBackColor = True
-        '
-        'cmdInfo
-        '
-        Me.cmdInfo.Image = Global.CoffeecupClient.My.Resources.Resources.information
-        Me.cmdInfo.Location = New System.Drawing.Point(345, 19)
-        Me.cmdInfo.Name = "cmdInfo"
-        Me.cmdInfo.Size = New System.Drawing.Size(27, 25)
-        Me.cmdInfo.TabIndex = 5
-        Me.cmdInfo.UseVisualStyleBackColor = True
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.Location = New System.Drawing.Point(13, 44)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(716, 68)
-        Me.PictureBox1.TabIndex = 398
-        Me.PictureBox1.TabStop = False
+        Me.PictureEdit1.Location = New System.Drawing.Point(0, 40)
+        Me.PictureEdit1.Name = "PictureEdit1"
+        Me.PictureEdit1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder
+        Me.PictureEdit1.Properties.PictureAlignment = System.Drawing.ContentAlignment.MiddleLeft
+        Me.PictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.[Auto]
+        Me.PictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze
+        Me.PictureEdit1.Size = New System.Drawing.Size(823, 104)
+        Me.PictureEdit1.TabIndex = 402
         '
         'frmPointOfSale
         '
@@ -967,9 +970,9 @@ Partial Class frmPointOfSale
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.txtTotalCancelled)
         Me.Controls.Add(Me.ckNonInventoryItem)
+        Me.Controls.Add(Me.PictureEdit1)
         Me.HelpButton = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MinimumSize = New System.Drawing.Size(1034, 577)
@@ -978,6 +981,8 @@ Partial Class frmPointOfSale
         Me.Text = "COFFEECUP POINT OF SALE"
         Me.GroupBox1.ResumeLayout(False)
         Me.Panel2.ResumeLayout(False)
+        Me.ToolStrip3.ResumeLayout(False)
+        Me.ToolStrip3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.grpBarcode.ResumeLayout(False)
@@ -985,9 +990,7 @@ Partial Class frmPointOfSale
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.MyDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ToolStrip3.ResumeLayout(False)
-        Me.ToolStrip3.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureEdit1.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1024,7 +1027,6 @@ Partial Class frmPointOfSale
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents grpBarcode As System.Windows.Forms.GroupBox
     Friend WithEvents ckNonInventoryItem As System.Windows.Forms.CheckBox
-    Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents lineOrderSlip As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents cmdDiscount As System.Windows.Forms.Button
     Friend WithEvents cmdPrintOrderSlip As System.Windows.Forms.Button
@@ -1064,4 +1066,5 @@ Partial Class frmPointOfSale
     Friend WithEvents cmdRemarks As System.Windows.Forms.Button
     Friend WithEvents lblCreditLimit As System.Windows.Forms.Label
     Friend WithEvents cmdAddCharges As System.Windows.Forms.Button
+    Friend WithEvents PictureEdit1 As DevExpress.XtraEditors.PictureEdit
 End Class

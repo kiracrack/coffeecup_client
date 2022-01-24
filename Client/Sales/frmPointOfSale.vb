@@ -222,8 +222,8 @@ Public Class frmPointOfSale
         'Me.Size = New Size(1034, 616) ' load default size standard for small screen
 
         lblDigitalHeader.Text = UCase(GlobalOrganizationName.Replace("&", "&&")) & Chr(13) & "Coffeecup Computing System"
-        If System.IO.File.Exists(Application.StartupPath.ToString & "\Logo\" & Globalclientlogofilename) = True Then
-            PictureBox1.Image = Image.FromFile(Application.StartupPath.ToString & "\Logo\" & Globalclientlogofilename)
+        If System.IO.File.Exists(Application.StartupPath.ToString & "\Logo\pos.png") = True Then
+            PictureEdit1.Image = Image.FromFile(Application.StartupPath.ToString & "\Logo\pos.png")
         End If
         If globalBackDateTransaction = True Then
             txtDateTransaction.Text = Format(globalBackDate.ToString("MMMM dd, yyyy")) & " " & Format(Now.ToString("hh:mm:ss tt"))
@@ -819,10 +819,10 @@ Public Class frmPointOfSale
                                   + " datetrn=" & If(globalBackDateTransaction = True, "concat('" & ConvertDate(globalBackDate) & "',' ',current_time)", "current_timestamp") _
                                   + parameter : com.ExecuteNonQuery()
 
-        If updaterequired = True Or originalsellprice = 0 And total > 0 Then
-            com.CommandText = "Update tblglobalproducts set sellingprice='" & Val(CC(sellprice)) & "',allowinputdiscountedamount=0, updaterequired=0,dateupdated=current_timestamp,updatedby='" & globaluserid & "' where productid='" & productid & "' and deleted=0 " : com.ExecuteNonQuery()
-            com.CommandText = "update tblinventory set sellingprice='" & Val(CC(sellprice)) & "' where productid='" & productid & "' and quantity > 0 " : com.ExecuteNonQuery()
-        End If
+        'If updaterequired = True Or originalsellprice = 0 And total > 0 Then
+        '    com.CommandText = "Update tblglobalproducts set sellingprice='" & Val(CC(sellprice)) & "',allowinputdiscountedamount=0, updaterequired=0,dateupdated=current_timestamp,updatedby='" & globaluserid & "' where productid='" & productid & "' and deleted=0 " : com.ExecuteNonQuery()
+        '    com.CommandText = "update tblinventory set sellingprice='" & Val(CC(sellprice)) & "' where productid='" & productid & "' and quantity > 0 " : com.ExecuteNonQuery()
+        'End If
 
         frmPOSAttendingPersonnel.salesid.Text = ""
         frmPOSAttendingPersonnel.txtSalesPerson.Text = ""
@@ -1234,6 +1234,7 @@ Public Class frmPointOfSale
         frmPOSEditLine.txtSellPrice.Text = MyDataGridView.Item("UNIT PRICE", MyDataGridView.CurrentRow.Index).Value().ToString()
         frmPOSEditLine.txtAmount.Text = MyDataGridView.Item("SUB TOTAL", MyDataGridView.CurrentRow.Index).Value().ToString()
         frmPOSEditLine.txtCompanyName.Text = MyDataGridView.Item("PARTICULAR", MyDataGridView.CurrentRow.Index).Value().ToString()
+        frmPOSEditLine.txtRemarks.Text = MyDataGridView.Item("REMARKS", MyDataGridView.CurrentRow.Index).Value().ToString()
 
         If compEnableInventory = True Then
             frmPOSEditLine.ckContractMode.Checked = CBool(qrysingledata("forcontract", "forcontract", "tblglobalproducts where productid='" & MyDataGridView.Item("PRODUCTID", MyDataGridView.CurrentRow.Index).Value().ToString() & "'"))
@@ -1610,6 +1611,7 @@ Public Class frmPointOfSale
         If RemarksColumnVisible = False Then Exit Sub
         frmPOSAddRemarks.trnid.Text = MyDataGridView.Item("ID", MyDataGridView.CurrentRow.Index).Value().ToString
         frmPOSAddRemarks.txtBatchcode.Text = txtBatchcode.Text
+        frmPOSAddRemarks.txtRemarks.Text = MyDataGridView.Item("REMARKS", MyDataGridView.CurrentRow.Index).Value().ToString
         frmPOSAddRemarks.ShowDialog()
     End Sub
 
