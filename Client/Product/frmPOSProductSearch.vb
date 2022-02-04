@@ -141,9 +141,10 @@ Public Class frmPOSProductSearch
     Public Sub SearchProduct(ByVal keywords As String)
         If txtSearchBox.Text = "" Then Exit Sub
         MyDataGridView.DataSource = Nothing : dst = New DataSet
+        Dim SearchCommand As String = "(" & SearchProductName("itemname", rchar(keywords)) & " or description like '%" & rchar(keywords) & "%' or productid like '%" & rchar(keywords) & "%'  or barcode like '%" & rchar(keywords) & "%' or (select description from tblprocategory where catid =tblglobalproducts.catid) like '%" & rchar(keywords) & "%' or (select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) like '%" & rchar(keywords) & "%')  and enablesell=1 " & If(GlobalenableProductFilter = True, " and catid in (select categorycode from tblproductfilter where permissioncode='" & globalAuthcode & "') ", "") & " "
         If EnableModuleSales = True Then
             If mode.Text = "searchmode" Then
-                msda = New MySqlDataAdapter("select productid as 'Product Code', ucase(itemname) as 'Product Name', ucase(unit) as 'Unit', (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category',(select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category',purchasedprice as 'Purchase Price'  from tblglobalproducts where deleted=0 and (" & SearchProductName("itemname", rchar(keywords)) & " or productid like '%" & rchar(keywords) & "%' or barcode like '%" & rchar(keywords) & "%' or (select description from tblprocategory where catid =tblglobalproducts.catid) like '%" & rchar(keywords) & "%' or (select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) like '%" & rchar(keywords) & "%') order by itemname asc", conn)
+                msda = New MySqlDataAdapter("select productid as 'Product Code', ucase(itemname) as 'Product Name', Description, ucase(unit) as 'Unit', (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category',(select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category',purchasedprice as 'Purchase Price'  from tblglobalproducts where deleted=0 and " & SearchCommand & " order by itemname asc", conn)
                 msda.Fill(dst, 0)
                 MyDataGridView.DataSource = dst.Tables(0)
             Else
@@ -153,13 +154,8 @@ Public Class frmPOSProductSearch
                 Else
                     strProductTemplate = ", if(servicemenuproduct=1,ifnull((select sum(amount) from tblproductserviceitem where source_productid=tblglobalproducts.productid),sellingprice),sellingprice) as 'Unit Price'  " & EncrypGridColumnNumbers("sellingprice", "Unit Price (Encypt)") & ""
                 End If
-                Dim SearchCommand As String = ""
 
-                SearchCommand = " and (" & SearchProductName("itemname", rchar(keywords)) & " or productid like '%" & rchar(keywords) & "%' or " _
-                      + " barcode like '%" & rchar(keywords) & "%')"
-
-
-                msda = New MySqlDataAdapter("select productid as 'Product Code',Barcode, ucase(itemname) as 'Product Name', (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category', (select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category', " & If(GlobalProductTemplate = 3, " partnumber as 'Part Number',", "") & " ifnull((select sum(quantity) from tblinventory where quantity>0 and productid = tblglobalproducts.productid and officeid='" & compOfficeid & "'),0) as 'Quantity', ucase(unit) as 'Unit', purchasedprice as 'Purchase Price' " & EncrypGridColumnNumbers("purchasedprice", "Purchase Price (Encypt)") & "  " & strProductTemplate & "  from tblglobalproducts where deleted=0 " & SearchCommand & "  and enablesell=1 " & If(GlobalenableProductFilter = True, " and catid in (select categorycode from tblproductfilter where permissioncode='" & globalAuthcode & "') ", "") & " order by itemname asc ", conn)
+                msda = New MySqlDataAdapter("select productid as 'Product Code',Barcode, ucase(itemname) as 'Product Name', Description, (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category', (select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category', " & If(GlobalProductTemplate = 3, " partnumber as 'Part Number',", "") & " ifnull((select sum(quantity) from tblinventory where quantity>0 and productid = tblglobalproducts.productid and officeid='" & compOfficeid & "'),0) as 'Quantity', ucase(unit) as 'Unit', purchasedprice as 'Purchase Price' " & EncrypGridColumnNumbers("purchasedprice", "Purchase Price (Encypt)") & "  " & strProductTemplate & "  from tblglobalproducts where deleted=0 and " & SearchCommand & " order by itemname asc ", conn)
                 msda.Fill(dst, 0)
                 MyDataGridView.DataSource = dst.Tables(0)
                 If GlobalProductTemplate = 4 Then
@@ -172,7 +168,7 @@ Public Class frmPOSProductSearch
                 GridColumnChoosed(MyDataGridView, Me.Name)
             End If
         Else
-            msda = New MySqlDataAdapter("select productid as 'Product Code', ucase(itemname) as 'Product Name', ucase(unit) as 'Unit', (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category',(select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category'  from tblglobalproducts where deleted=0 and (" & SearchProductName("itemname", rchar(keywords)) & " or productid like '%" & rchar(keywords) & "%' or barcode like '%" & rchar(keywords) & "%' or (select description from tblprocategory where catid =tblglobalproducts.catid) like '%" & rchar(keywords) & "%' or (select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) like '%" & rchar(keywords) & "%') order by itemname asc", conn)
+            msda = New MySqlDataAdapter("select productid as 'Product Code', ucase(itemname) as 'Product Name', Description, ucase(unit) as 'Unit', (select DESCRIPTION from tblprocategory where CATID = tblglobalproducts.CATID) as 'Category',(select description from tblprosubcategory where subcatid = tblglobalproducts.subcatid) as 'Sub Category'  from tblglobalproducts where deleted=0 and " & SearchCommand & " order by itemname asc", conn)
             msda.Fill(dst, 0)
             MyDataGridView.DataSource = dst.Tables(0)
         End If
@@ -183,7 +179,7 @@ Public Class frmPOSProductSearch
     End Sub
 
     Public Sub PaintColumnFormat()
-        GridColumAutonWidth(MyDataGridView, {"Category", "Product Name", "Sub Category", "Part Number"})
+        GridColumAutonWidth(MyDataGridView, {"Category", "Product Name", "Description", "Sub Category", "Part Number"})
         GridColumnWidth(MyDataGridView, {"Barcode", "Product Code"}, 90)
         GridColumnWidth(MyDataGridView, {"Quantity", "Unit Price (Original)", "Unit Price1", "Unit Price2", "Unit Price3", "Unit Price4", "Optional", "Purchase Price (Encypt)", "Unit Price (Encypt)", "Unit Price1 (Encypt)", "Unit Price2 (Encypt)", "Unit Price3 (Encypt)", "Unit Price4 (Encypt)"}, 80)
         If mode.Text = "searchmode" Then

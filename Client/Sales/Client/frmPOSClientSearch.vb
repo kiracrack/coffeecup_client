@@ -21,9 +21,9 @@ Public Class frmPOSClientSearch
     Public Sub ShowProductList()
         MyDataGridView.DataSource = Nothing : msda = Nothing : dst = New DataSet
         If Globalenableclientfilter = True Then
-            msda = New MySqlDataAdapter("Select cifid as 'Client ID',  COMPANYNAME as 'Client Name',  COMPADD as 'Address',  TELEPHONE as 'Contact No.', birthdate as 'Birth Date',emailadd as 'Email',VIP from tblclientaccounts where groupcode in (select groupcode from tblclientfilter where permissioncode='" & globalAuthcode & "') and (COMPANYNAME like '%" & rchar(txtsearch.Text) & "%' or (select vipcardno from tblhotelguest where guestid=tblclientaccounts.vipguestid)  like '%" & rchar(txtsearch.Text) & "%') and deleted=0 and blocked=0 and (vip=0 or (vip=1 and vipactivated=1)) order by companyname asc", conn)
+            msda = New MySqlDataAdapter("Select cifid as 'Client ID',  COMPANYNAME as 'Client Name', codename as 'Code Name', COMPADD as 'Address',  TELEPHONE as 'Contact No.', birthdate as 'Birth Date',emailadd as 'Email',VIP from tblclientaccounts where groupcode in (select groupcode from tblclientfilter where permissioncode='" & globalAuthcode & "') and (COMPANYNAME like '%" & rchar(txtsearch.Text) & "%' or codename like '%" & rchar(txtsearch.Text) & "%' or COMPADD like '%" & rchar(txtsearch.Text) & "%' or (select vipcardno from tblhotelguest where guestid=tblclientaccounts.vipguestid)  like '%" & rchar(txtsearch.Text) & "%') and deleted=0 and blocked=0 and (vip=0 or (vip=1 and vipactivated=1)) order by companyname asc", conn)
         Else
-            msda = New MySqlDataAdapter("Select cifid as 'Client ID',  COMPANYNAME as 'Client Name',  COMPADD as 'Address',  TELEPHONE as 'Contact No.', birthdate as 'Birth Date',emailadd as 'Email',VIP from tblclientaccounts where (COMPANYNAME like '%" & rchar(txtsearch.Text) & "%' or (select vipcardno from tblhotelguest where guestid=tblclientaccounts.vipguestid) like '%" & rchar(txtsearch.Text) & "%') and deleted=0 and blocked=0 and (vip=0 or (vip=1 and vipactivated=1)) order by COMPANYNAME asc", conn)
+            msda = New MySqlDataAdapter("Select cifid as 'Client ID',  COMPANYNAME as 'Client Name', codename as 'Code Name', COMPADD as 'Address',  TELEPHONE as 'Contact No.', birthdate as 'Birth Date',emailadd as 'Email',VIP from tblclientaccounts where (COMPANYNAME like '%" & rchar(txtsearch.Text) & "%' or codename like '%" & rchar(txtsearch.Text) & "%' or COMPADD like '%" & rchar(txtsearch.Text) & "%' or (select vipcardno from tblhotelguest where guestid=tblclientaccounts.vipguestid) like '%" & rchar(txtsearch.Text) & "%') and deleted=0 and blocked=0 and (vip=0 or (vip=1 and vipactivated=1)) order by COMPANYNAME asc", conn)
         End If
         msda.Fill(dst, 0)
         MyDataGridView.DataSource = dst.Tables(0)
@@ -37,6 +37,7 @@ Public Class frmPOSClientSearch
         MyDataGridView.Focus()
     End Sub
     Public Sub PaintColumnFormat()
+        GridColumAutonWidth(MyDataGridView, {"Code Name", "Email"})
         GridColumnWidth(MyDataGridView, {"Client ID"}, 0)
         GridColumnWidth(MyDataGridView, {"Address"}, 200)
         GridColumnWidth(MyDataGridView, {"Contact No.", "Birth Date", "Email", "VIP"}, 80)

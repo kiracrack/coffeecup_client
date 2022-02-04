@@ -673,18 +673,22 @@ Module SalesPrinting
 
         TableHead = "<table border='1'> " _
                             + " <tr> " _
+                                + " <th>No.</th> " _
                                 + " <th>Particular</th> " _
+                                + " <th>Brand</th> " _
                                 + " <th>Quantity</th> " _
                                 + " <th>Unit</th> " _
                                 + " <th>Unit Cost</th> " _
                                 + " <th>Discount</th> " _
                                 + " <th>Total</th> " _
                             + " </tr> " & Chr(13)
-
-        com.CommandText = "select *,sum(quantity) as totalquantity,sum(total) as totaltrn from tblsalestransaction where batchcode='" & batchcode & "' and cancelled=0 and void=0 group by productid order by datetrn asc " : rst = com.ExecuteReader
+        Dim cnt As Integer = 1
+        com.CommandText = "select *,sum(quantity) as totalquantity,sum(total) as totaltrn, (select (select description from tblprosubcategory where subcatid=x.subcatid) from tblglobalproducts as x where productid=a.productid) as subcatname from tblsalestransaction as a where batchcode='" & batchcode & "' and cancelled=0 and void=0 group by productid order by datetrn asc " : rst = com.ExecuteReader
         While rst.Read
             TableRow += "<tr> " _
+                           + " <td align='center'>" & cnt & "</td> " _
                            + " <td>" & rst("productname").ToString & "</td> " _
+                           + " <td>" & rst("subcatname").ToString & "</td> " _
                            + " <td align='center'>" & rst("totalquantity").ToString & "</td> " _
                            + " <td align='center'>" & rst("unit").ToString & "</td> " _
                            + " <td align='right'>" & FormatNumber(rst("originalsellprice").ToString, 2) & "</td> " _
@@ -692,13 +696,14 @@ Module SalesPrinting
                            + " <td align='right'>" & FormatNumber(rst("totaltrn").ToString, 2) & "</td> " _
                      + " </tr> " & Chr(13)
             Total = Total + rst("totaltrn")
+            cnt = cnt + 1
         End While
         rst.Close()
 
-        TableRow += "<tr><td align='right' colspan='5'>Total</td><td align='right'><strong>" & FormatNumber(Total, 2) & "</strong></td></tr> " & Chr(13)
+        TableRow += "<tr><td align='right' colspan='7'>Total</td><td align='right'><strong>" & FormatNumber(Total, 2) & "</strong></td></tr> " & Chr(13)
         If partialPayment > 0 Then
-            TableRow += "<tr><td align='right' colspan='5'>" & If((Total - partialPayment) = 0, "PAID", "Less Partial Payment") & "</td><td align='right'>" & FormatNumber(partialPayment, 2) & "</td></tr> " & Chr(13)
-            TableRow += "<tr><td align='right' colspan='5'>Balance</td><td align='right'>" & FormatNumber(Total - partialPayment, 2) & "</td></tr> " & Chr(13)
+            TableRow += "<tr><td align='right' colspan='7'>" & If((Total - partialPayment) = 0, "PAID", "Less Partial Payment") & "</td><td align='right'>" & FormatNumber(partialPayment, 2) & "</td></tr> " & Chr(13)
+            TableRow += "<tr><td align='right' colspan='7'>Balance</td><td align='right'>" & FormatNumber(Total - partialPayment, 2) & "</td></tr> " & Chr(13)
         End If
 
         TableFooter = "</table>"
@@ -715,14 +720,14 @@ Module SalesPrinting
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[invoice]", invoicenumber), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[date]", If(globalBackDateTransaction = True, globalBackDate.ToShortDateString, Now.ToShortDateString)), False)
         My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[transaction]", TableTransaction), False)
-        com.CommandText = "select *, ifnull((select fullname from tblaccounts where accountid=tblsalesbatch.trnby),' ') as 'trnfullname',ifnull((select designation from tblaccounts where accountid=tblsalesbatch.trnby),' ')  as 'trnposition' from tblsalesbatch where batchcode='" & batchcode & "'" : rst = com.ExecuteReader
-        While rst.Read
-            My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared name]", UCase(rst("trnfullname"))), False)
-            My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared position]", UCase(rst("trnposition"))), False)
-        End While
-        rst.Close()
-        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[validated by]", UCase(globalfullname)), False)
-        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[validated position]", UCase(globalposition)), False)
+        'com.CommandText = "select *, ifnull((select fullname from tblaccounts where accountid=tblsalesbatch.trnby),' ') as 'trnfullname',ifnull((select designation from tblaccounts where accountid=tblsalesbatch.trnby),' ')  as 'trnposition' from tblsalesbatch where batchcode='" & batchcode & "'" : rst = com.ExecuteReader
+        'While rst.Read
+        '    My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared name]", UCase(rst("trnfullname"))), False)
+        '    My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared position]", UCase(rst("trnposition"))), False)
+        'End While
+        'rst.Close()
+        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared name]", UCase(globalfullname)), False)
+        My.Computer.FileSystem.WriteAllText(SaveLocation, My.Computer.FileSystem.ReadAllText(SaveLocation).Replace("[prepared position]", UCase(globalposition)), False)
 
         PrintLXReceipt(SaveLocation.Replace("\", "/"), form)
     End Sub
